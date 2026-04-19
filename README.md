@@ -14,22 +14,6 @@ An AI-powered portfolio chatbot that uses **Retrieval-Augmented Generation (RAG)
 
 ## 🧠 How It Works
 
-User Question
-     │
-     ▼
-Streamlit UI  ──── HTTP ────▶  FastAPI Backend
-                                     │
-                              ChromaDB (Vector Store)
-                                     │
-                         HuggingFace Embeddings (MiniLM-L6)
-                                     │
-                              Retrieved Context
-                                     │
-                         HuggingFace LLM (GPT-OSS 120B)
-                                     │
-                                   Answer
-
-
 1. **Ingest** — Markdown files (`about.md`, `education.md`, `experience.md`, `projects/`, `links.md`) are chunked and embedded into ChromaDB.
 2. **Retrieve** — On each question, the top-3 most relevant chunks are retrieved from the vector store.
 3. **Generate** — A HuggingFace-hosted LLM generates a grounded answer using only the retrieved context.
